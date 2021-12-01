@@ -1,0 +1,34 @@
+{
+  "name": "APIserver",
+  "version": "1.0.0",
+  "description": "API server for SDC",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DRufusLord/APIserver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DRufusLord/APIserver/issues"
+  },
+  "homepage": "https://github.com/DRufusLord/APIserver#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mocha": "^9.1.3",
+    "mongoose": "^6.0.13",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "supertest": "^6.1.6"
+  }
+}
