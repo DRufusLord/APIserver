@@ -30,7 +30,7 @@ app.use(
     extended: true,
   })
 )
-app.get('loaderio-5ff779c0e099701885989c46c13db70f', (req, res) => {
+app.get('/loaderio-5ff779c0e099701885989c46c13db70f', (req, res) => {
   res.send('loaderio-5ff779c0e099701885989c46c13db70f');
 });
 
