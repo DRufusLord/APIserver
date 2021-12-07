@@ -1,15 +1,23 @@
 const express = require('express');
 
-const pool = require('../database/queries');
 const morgan = require('morgan');
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 const routerProducts = require('./routerProducts')
 
 
 const app = express();
 module.exports.app = app;
+
+const Pool = require('pg').Pool;
+const pool = new Pool({
+  user: 'ubuntu',
+  host:'3.144.70.63',
+  database: 'api',
+  password: 'ubuntu',
+  port: 5432,
+})
 
 app.set('port', 3000);
 
