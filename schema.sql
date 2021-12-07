@@ -9,7 +9,7 @@
 -- Table 'products'
 --
 -- ---
-
+-- psql -U ubuntu -p 5432 -h 3.144.70.63 -d api < ecomdb.dump
 -- psql rufus -h 127.0.0.1 -d api -f schema.sql
 
 DROP TABLE IF EXISTS related;

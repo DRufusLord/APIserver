@@ -31,6 +31,6 @@ app.use('/products', routerProducts);
 
 app.listen(app.get('port'));
 
-console.log('listening to port 3000')
+console.log('listening to port 3000');
 
 
