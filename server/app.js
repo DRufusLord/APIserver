@@ -1,6 +1,6 @@
 const express = require('express');
 
-
+const pool = require('../database/queries');
 const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser')
@@ -33,4 +33,9 @@ app.listen(app.get('port'));
 
 console.log('listening to port 3000');
 
-
+pool.connect((err) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack)
+  }
+  console.log('database connected!');
+});

@@ -7,6 +7,15 @@ const pool = new Pool({
   port: 5432,
 })
 
+module.exports.pool = pool;
+
+pool.connect((err) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack)
+  }
+  console.log('database connected!');
+});
+
 module.exports = {
   products: {
     getProducts: (req, res) => {
