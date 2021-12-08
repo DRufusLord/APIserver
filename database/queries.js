@@ -29,8 +29,6 @@ module.exports = {
       let {offset, limit} = req.query;
       if(!offset) offset = 0;
       if(!limit) limit = 10;
-      //(postman)after endpoint, using ?limit=100&offset=200 to include these params;
-      //limit means how many entries from offset+1 to return, offset is the starting row but not include that row;
       //if limit is 10, return 10 entries;
       //if offset is 0, return entries starting from row 1;
       pool.query('SELECT * FROM products order by product_id asc LIMIT $1 OFFSET $2 ',[limit, offset],(err, results) => {
@@ -79,29 +77,7 @@ module.exports = {
     getStyles: (req, res) => {
 
       const id = parseInt(req.params.product_id);
-      // let queryStr = `select \
-      //                 json_build_object(\
-      //                   'style_id', s.id,\
-      //                   'name', s.name,\
-      //                   'original_price', s.original_price,\
-      //                   'sale_price', s.sale_price,\
-      //                   'default?', s.default_style,\
-      //                   'photos', jsonb_agg(\
-      //                     json_build_object(\
-      //                       'phId', ph.id,
-      //                       'url', ph.url,\
-      //                       'thumbnail_url', ph.thumbnail_url)),\
-      //                   'skus', jsonb_agg(\
-      //                     json_build_object(\
-      //                       'skuId', sk.id,
-      //                       'size', sk.size,\
-      //                       'quantity', sk.quantity))\
-      //                 )\
-      //                 from styles s\
-      //                 inner join skus sk on sk.styleId = s.id\
-      //                 left join photos ph on ph.styleId = s.id\
-      //                 where s.productId = $1\
-      //                 group by s.id`;
+
       let queryStr = `SELECT product_id,
       (SELECT array_to_json(array_agg(row_to_json(Results)))
         as results FROM
