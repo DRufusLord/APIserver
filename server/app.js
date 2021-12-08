@@ -10,15 +10,6 @@ const routerProducts = require('./routerProducts')
 const app = express();
 module.exports.app = app;
 
-const Pool = require('pg').Pool;
-const pool = new Pool({
-  user: 'ubuntu',
-  host:'3.144.70.63',
-  database: 'api',
-  password: 'ubuntu',
-  port: 5432,
-})
-
 app.set('port', 3000);
 
 app.use(morgan('dev'));
@@ -45,9 +36,3 @@ app.listen(app.get('port'));
 
 console.log('listening to port 3000');
 
-pool.connect((err) => {
-  if (err) {
-    return console.error('Error acquiring client', err.stack)
-  }
-  console.log('database connected!');
-});

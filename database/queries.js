@@ -1,13 +1,19 @@
 const Pool = require('pg').Pool;
-const pool = new Pool({
-  user: 'ubuntu',
-  host:'3.144.70.63',
-  database: 'api',
-  password: 'ubuntu',
-  port: 5432,
-})
+// const pool = new Pool({
+//   user: 'ubuntu',
+//   host:'3.144.70.63',
+//   database: 'api',
+//   password: 'ubuntu',
+//   port: 5432,
+// })
 
-module.exports.pool = pool;
+const pool = new Pool({
+  user: 'rufus',
+  host:'localhost',
+  database: 'api',
+  password: 'password',
+  port: 5432,
+});
 
 pool.connect((err) => {
   if (err) {
@@ -20,7 +26,14 @@ module.exports = {
   products: {
     getProducts: (req, res) => {
 
-      pool.query('SELECT * FROM products order by product_id asc', (err, results) => {
+      let {offset, limit} = req.query;
+      if(!offset) offset = 0;
+      if(!limit) limit = 10;
+      //(postman)after endpoint, using ?limit=100&offset=200 to include these params;
+      //limit means how many entries from offset+1 to return, offset is the starting row but not include that row;
+      //if limit is 10, return 10 entries;
+      //if offset is 0, return entries starting from row 1;
+      pool.query('SELECT * FROM products order by product_id asc LIMIT $1 OFFSET $2 ',[limit, offset],(err, results) => {
         if(err) {
           throw err;
         }
