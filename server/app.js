@@ -10,7 +10,7 @@ const routerProducts = require('./routerProducts')
 const app = express();
 module.exports.app = app;
 
-app.set('port', 3000);
+app.set('port', 3004);
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -21,8 +21,8 @@ app.use(
     extended: true,
   })
 )
-app.get('/loaderio-5ff779c0e099701885989c46c13db70f', (req, res) => {
-  res.send('loaderio-5ff779c0e099701885989c46c13db70f');
+app.get('/loaderio-40ce1d8267bcad84efc9dbed1a488299', (req, res) => {
+  res.send('loaderio-40ce1d8267bcad84efc9dbed1a488299');
 });
 
 app.use('/products', routerProducts);
