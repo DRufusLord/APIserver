@@ -10,7 +10,7 @@ const routerProducts = require('./routerProducts')
 const app = express();
 module.exports.app = app;
 
-app.set('port', 3004);
+app.set('port', 3000);
 
 app.use(morgan('dev'));
 app.use(cors());
